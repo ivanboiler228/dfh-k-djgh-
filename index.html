@@ -909,6 +909,7 @@
             let currentPos = 0;
             let isSpinning = false;
             let secondsToRegen = 1200;
+            let gameInitialized = false;
 
             const tokensDisplay = document.getElementById('tokens-display');
             const crystalsDisplay = document.getElementById('crystals-display');
@@ -919,8 +920,6 @@
             const scrollArea = document.getElementById('tab-home');
             const sidebar = document.getElementById('sidebar');
 
-            const tabHome = document.getElementById('tab-home');
-            const tabGame = document.getElementById('tab-game');
             const navItems = document.querySelectorAll('.nav-item[data-tab]');
 
             const quizModal = document.getElementById('quiz-modal');
@@ -954,8 +953,15 @@
                 navItems.forEach(item => {
                     item.classList.toggle('active', item.dataset.tab === tabId);
                 });
-                if (tabId === 'game') sidebar.style.display = 'none';
-                else sidebar.style.display = 'flex';
+                if (tabId === 'game') {
+                    sidebar.style.display = 'none';
+                    if (!gameInitialized) {
+                        initBoard();
+                        gameInitialized = true;
+                    }
+                } else {
+                    sidebar.style.display = 'flex';
+                }
             }
 
             navItems.forEach(item => {
@@ -1051,56 +1057,35 @@
 
             const cols = 4; 
             const step = 70; 
-            const boardContainer = document.getElementById('board-container');
+            let boardContainer;
 
-function getTilePosition(index) {
-    const cycle = Math.floor(index / 12);
-    const rem = index % 12;
-    
-    let col = 0;
-    let row = cycle * 6;
+            function getTilePosition(index) {
+                const cycle = Math.floor(index / 12);
+                const rem = index % 12;
+                let col = 0;
+                let row = cycle * 6;
+                if (rem < 4) { col = rem; row += 0; }
+                else if (rem < 6) { col = 3; row += (rem - 3); }
+                else if (rem < 10) { col = 9 - rem; row += 3; }
+                else { col = 0; row += (rem - 6); }
+                return { col, row };
+            }
 
-    if (rem < 4) {
-        col = rem;
-        row += 0;
-    } else if (rem < 6) {
-        col = 3;
-        row += (rem - 3);
-    } else if (rem < 10) {
-        col = 9 - rem;
-        row += 3;
-    } else {
-        col = 0;
-        row += (rem - 6);
-    }
-
-    return { col, row };
-}
-
-function initBoard() {
+            function initBoard() {
+                boardContainer = document.getElementById('board-container');
                 if (!boardContainer) return;
                 boardContainer.innerHTML = '<div id="player-token">🚗</div>';
-                
                 for (let i = 0; i < 200; i++) {
                     const tile = document.createElement('div');
                     tile.className = 'board-tile';
-                    
                     const rand = Math.random() * 100;
-                    if (i === 0) {
-                        tile.innerText = 'GO';
-                        tile.style.background = '#2ecc71';
-                    } else if (rand < 5) {
-                        tile.classList.add('jackpot'); tile.innerText = '💰'; tile.dataset.type = 'super_jackpot';
-                    } else if (rand < 15) {
-                        tile.classList.add('chance'); tile.innerText = '🎡'; tile.dataset.type = 'wheel';
-                    } else {
-                        tile.classList.add('quiz'); tile.innerText = '❓'; tile.dataset.type = 'quiz';
-                    }
-
+                    if (i === 0) { tile.innerText = 'GO'; tile.style.background = '#2ecc71'; }
+                    else if (rand < 5) { tile.classList.add('jackpot'); tile.innerText = '💰'; tile.dataset.type = 'super_jackpot'; }
+                    else if (rand < 15) { tile.classList.add('chance'); tile.innerText = '🎡'; tile.dataset.type = 'wheel'; }
+                    else { tile.classList.add('quiz'); tile.innerText = '❓'; tile.dataset.type = 'quiz'; }
                     const pos = getTilePosition(i);
                     let x = pos.col * step;
                     let y = -pos.row * step;
-                    
                     tile.style.transform = `translate(${x}px, ${y}px)`;
                     boardContainer.appendChild(tile);
                 }
@@ -1111,72 +1096,61 @@ function initBoard() {
                 const pos = getTilePosition(currentPos);
                 let px = pos.col * step;
                 let py = -pos.row * step;
-
                 const tiles = document.querySelectorAll('.board-tile');
                 tiles.forEach((tile, index) => {
                     if (index < currentPos) tile.classList.add('passed');
                     else tile.classList.remove('passed');
                 });
-
                 const token = document.getElementById('player-token');
                 if(token) {
                     token.style.transform = `translate(${px}px, ${py - 30}px) scale(1.3)`;
                     token.style.filter = `drop-shadow(0 25px 8px rgba(0,0,0,0.3))`;
                 }
-                
                 setTimeout(() => {
                     if(token) {
                         token.style.transform = `translate(${px}px, ${py}px) scale(1)`;
                         token.style.filter = `drop-shadow(0 8px 4px rgba(0,0,0,0.6))`;
                     }
                 }, 150);
-                
                 let offsetY = Math.max(0, -py - 30);
                 if(boardContainer) boardContainer.style.transform = `translateY(${offsetY}px)`;
             }
 
             function playTurn() {
-    if (energy <= 0) {
-        alert("Энергия на нуле! ⚡️ Жди таймер.");
-        return;
-    }
-
-    const rollBtn = document.getElementById('roll-btn');
-    const diceFace = document.getElementById('dice-face');
-    
-    rollBtn.disabled = true;
-    diceFace.classList.add('shaking');
-
-    let shuffles = 0;
-    let finalRoll = 1;
-    const diceChars = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
-    
-    const rollInterval = setInterval(() => {
-        finalRoll = Math.floor(Math.random() * 6) + 1;
-        diceFace.innerText = diceChars[finalRoll - 1];
-        shuffles++;
-        if (shuffles > 18) {  
-            clearInterval(rollInterval);
-            diceFace.classList.remove('shaking');
-            energy--;
-            updateAllDisplays();
-            setTimeout(() => {
-                let stepsTaken = 0;
-                const moveInterval = setInterval(() => {
-                    currentPos++;
-                    stepsTaken++;
-                    updateGameBoardPosition();
-                    
-                    if (stepsTaken >= finalRoll) {
-                        clearInterval(moveInterval);
-                        rollBtn.disabled = false;
-                        setTimeout(checkTileEvent, 300);
+                if (energy <= 0) { alert("Энергия на нуле! ⚡️ Жди таймер."); return; }
+                const rollBtn = document.getElementById('roll-btn');
+                const diceFace = document.getElementById('dice-face');
+                rollBtn.disabled = true;
+                diceFace.classList.add('shaking');
+                let shuffles = 0;
+                let finalRoll = 1;
+                const diceChars = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+                const rollInterval = setInterval(() => {
+                    finalRoll = Math.floor(Math.random() * 6) + 1;
+                    diceFace.innerText = diceChars[finalRoll - 1];
+                    shuffles++;
+                    if (shuffles > 18) {
+                        clearInterval(rollInterval);
+                        diceFace.classList.remove('shaking');
+                        energy--;
+                        updateAllDisplays();
+                        setTimeout(() => {
+                            let stepsTaken = 0;
+                            const moveInterval = setInterval(() => {
+                                currentPos++;
+                                stepsTaken++;
+                                updateGameBoardPosition();
+                                if (stepsTaken >= finalRoll) {
+                                    clearInterval(moveInterval);
+                                    rollBtn.disabled = false;
+                                    setTimeout(checkTileEvent, 300);
+                                }
+                            }, 300);
+                        }, 600);
                     }
-                }, 300); 
-            }, 600); 
-        }
-    }, 100);  
-}
+                }, 100);
+            }
+
             function checkTileEvent() {
                 const tiles = document.querySelectorAll('.board-tile');
                 if (currentPos >= tiles.length) {
@@ -1187,10 +1161,8 @@ function initBoard() {
                     updateGameBoardPosition();
                     return;
                 }
-
-                const currentTile = tiles[currentPos]; 
+                const currentTile = tiles[currentPos];
                 if(!currentTile) return;
-
                 const type = currentTile.dataset.type;
                 if (type === 'super_jackpot') {
                     const prize = Math.floor(Math.random() * 31) + 20;
@@ -1231,11 +1203,10 @@ function initBoard() {
                 alert("Энергия восстановлена (чит-код для демо)!");
             });
 
-
             quizModal.addEventListener('click', e => { if (e.target === quizModal) quizModal.style.display = 'none'; });
             wheelModal.addEventListener('click', e => { if (e.target === wheelModal && !isSpinning) wheelModal.style.display = 'none'; });
+
             window.addEventListener('DOMContentLoaded', () => {
-                initBoard();
                 startEnergyTimer();
                 updateAllDisplays();
                 switchTab('home');
