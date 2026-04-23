@@ -91,9 +91,11 @@
         }
         
         #tab-game {
-            padding: 20px;
+            padding: 10px 20px;
             align-items: center;
-            overflow-x: hidden;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .section-home {
@@ -496,8 +498,8 @@
             color: #2ecc71;
             border: 4px solid var(--mtb-blue);
             box-shadow: 4px 4px 0 var(--mtb-red);
-            padding: 12px 20px;
-            margin-bottom: 25px;
+            padding: 8px 15px;
+            margin-bottom: 10px;
             font-weight: bold;
             display: flex;
             justify-content: space-between;
@@ -507,8 +509,9 @@
         }
 
         #board-viewport {
+            flex: 1;
             width: 100%;
-            height: 380px;
+            min-height: 0;
             background: #2c3e50;
             background-image: radial-gradient(#34495e 1px, transparent 1px);
             background-size: 20px 20px;
@@ -516,7 +519,7 @@
             box-shadow: inset 0 10px 30px rgba(0,0,0,0.8), 6px 6px 0 var(--mtb-red);
             position: relative;
             overflow: hidden;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             border-radius: 8px;
         }
 
@@ -579,23 +582,24 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
             width: 100%;
+            padding-bottom: 5px;
         }
 
         #dice-face {
-            font-size: 80px;
+            font-size: 50px;
             line-height: 1;
             color: var(--mtb-red);
             background: white;
             border: 4px solid var(--mtb-blue);
-            border-radius: 12px;
-            width: 90px;
-            height: 90px;
+            border-radius: 10px;
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 6px 6px 0 black;
+            box-shadow: 4px 4px 0 black;
             user-select: none;
         }
 
@@ -631,7 +635,9 @@
         .retro-btn.dice-btn {
             width: 100%;
             max-width: 300px;
-            font-size: 18px;
+            font-size: 16px;
+            padding: 10px 30px;
+            box-shadow: 4px 4px 0 black;
         }
 
         .modal-overlay {
@@ -813,8 +819,6 @@
             </div>
 
             <div id="tab-game" class="tab-panel">
-                <div class="game-retro-title">🗺️ НАСТОЛКА МТБАНКА</div>
-                
                 <div class="energy-retro">
                     <span>⚡️ <span id="energy-count">5</span>/5</span>
                     <span id="energy-timer">МАКСИМУМ</span>
@@ -829,7 +833,7 @@
                 <div class="dice-section">
                     <div id="dice-face">⚀</div>
                     <button id="roll-btn" class="retro-btn dice-btn">БРОСИТЬ КУБИК</button>
-                    <div class="game-hint" style="margin-bottom: 20px; font-weight:bold; color:var(--mtb-blue);">Двигайся по доске, лови призы!</div>
+                    <div class="game-hint" style="margin-bottom: 5px; font-weight:bold; color:var(--mtb-blue); font-size: 12px;">Двигайся по доске, лови призы!</div>
                 </div>
             </div>
 
