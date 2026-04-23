@@ -369,6 +369,77 @@
     margin-top: 10px;
     font-weight: bold;
 }
+/* Интегрированные стили Main */
+.main-scroll-area {
+    flex: 1; overflow-y: auto; background: var(--mtb-bg);
+}
+
+.room-container {
+    width: 100%; height: 300px; display: flex; justify-content: center;
+    background: #fff; border-bottom: 4px solid var(--mtb-blue);
+}
+
+.room_img { width: 100%; height: 100%; object-fit: cover; }
+
+.sticky-title {
+    position: sticky; top: 0; background: var(--mtb-blue);
+    color: white; padding: 12px; font-weight: bold; text-align: center;
+    z-index: 10; border-top: 4px solid var(--mtb-red);
+}
+
+.finance-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px;
+}
+
+.fin-card {
+    background: white; border: 3px solid var(--mtb-blue); padding: 10px;
+    text-align: center; box-shadow: 4px 4px 0 black;
+}
+
+.fin-card label { font-size: 10px; opacity: 0.7; display: block; }
+.fin-card .amount { font-size: 14px; font-weight: bold; margin: 5px 0; }
+
+.shop-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px;
+    background: #ccc;
+}
+
+.shop-item {
+    background: white; border: 3px solid var(--mtb-blue); padding: 10px;
+    display: flex; flex-direction: column; align-items: center;
+    box-shadow: 3px 3px 0 black;
+}
+
+.shop-item.locked { opacity: 0.5; filter: grayscale(1); }
+
+.item-imgage { font-size: 40px; margin-bottom: 5px; }
+
+.buy-btn {
+    background: var(--mtb-red); color: white; border: 2px solid black;
+    width: 100%; padding: 5px; font-family: inherit; font-weight: bold;
+}
+
+/* Модалка */
+.shop-modal-overlay {
+    position: fixed; top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.8); z-index: 10000; display: flex;
+    justify-content: center; align-items: center;
+}
+
+.shop-modal-content {
+    background: white; width: 90%; max-width: 350px; padding: 20px;
+    border: 4px solid var(--mtb-blue); box-shadow: 10px 10px 0 var(--mtb-red);
+}
+
+.history-scroll {
+    max-height: 150px; overflow-y: auto; padding: 10px;
+    background: #fdfdfd; font-size: 11px;
+}
+
+.history-row {
+    display: flex; justify-content: space-between; border-bottom: 1px dashed #ccc;
+    padding: 5px 0;
+}
     </style>
 </head>
 <body>
@@ -382,68 +453,88 @@
     <div class="tabs-container">
 
         <div id="tab-home" class="tab-panel active">
-            <section id="home" class="section-home">
-                <div class="room-container">
-                    <img src="https://i.pinimg.com/736x/25/09/e8/2509e828fe4a726f3860427480113076.jpg" alt="">
-                </div>
-                <div style="margin-top: 30px; font-weight: bold; background: var(--mtb-red); color: white; padding: 10px;">[ СКРОЛЛ ВНИЗ ДЛЯ РЫНКА ]</div>
-            </section>
-
-            <div id="info" class="sticky-title">-- ДЕТАЛЬНЫЙ ОТЧЕТ СИСТЕМЫ --</div>
-            <section class="section-info" style="padding: 20px;">
-                <div style="background:white; border:3px solid var(--mtb-blue); padding:15px; box-shadow:6px 6px 0 var(--mtb-red); margin-bottom:20px;">
-                    <div class="level-header">
-                        <span class="lvl-label">ТЕКУЩИЙ_УРОВЕНЬ:</span>
-                        <span class="lvl-num" id="info-level">05</span>
+            <main class="main-scroll-area">
+                <section class="section-home">
+                    <div class="room-container">
+                        <img id="roomImage" class="room_img" src="https://i.pinimg.com/736x/95/9f/0a/959f0a09bfbdfa588d61b2106d348d85.jpg" alt="Home">
                     </div>
-                    <div class="xp-container"><div class="xp-bar" id="xp-bar" style="width: 75%;"></div></div>
-                    <div class="xp-details">
-                        <span id="xp-text">XP: 8750 / 10000</span>
-                        <span class="blink-text">ОСТАЛОСЬ: 1250 TOKENS</span>
+                </section>
+        
+                <div class="sticky-title">ЛИЧНАЯ_ИНФОРМАЦИЯ</div>
+                <section class="section-info">
+                    <div class="retro-box level-section">
+                        <div class="level-header">
+                            <span class="lvl-label">УРОВЕНЬ:</span>
+                            <span class="lvl-num lvl-val">01</span>
+                        </div>
+                        <div class="xp-container">
+                            <div id="xp-bar-fill" class="xp-bar" style="width: 0%;"></div>
+                        </div>
+                        <div class="xp-details">
+                            <span id="xp-text">XP: 0 / 1000</span>
+                            <span class="blink-text">MTB_SECURE_CONNECTION...</span>
+                        </div>
                     </div>
-                </div>
-
-                <div class="finance-grid">
-                    <div style="background:white; border:3px solid var(--mtb-blue); padding:10px; box-shadow:4px 4px 0 var(--mtb-blue);">
-                        <label>BANK_DEBIT</label>
-                        <div style="font-size:20px; font-weight:bold;">425.50 BYN</div>
-                        <div class="trend down">↓ -12% (МЕСЯЦ)</div>
+        
+                    <div class="finance-grid">
+                        <div class="fin-card">
+                            <label>BANK_DEBIT</label>
+                            <div class="amount">425.50 BYN</div>
+                            <div class="trend down">-12% (МЕСЯЦ)</div>
+                        </div>
+                        <div class="fin-card" style="border-color: var(--mtb-red);">
+                            <label>GAME_BALANCE</label>
+                            <div class="amount"><span class="balance-val">0</span> 🪙</div>
+                            <div class="trend up">+40% (НЕДЕЛЯ)</div>
+                        </div>
                     </div>
-                    <div style="background:white; border:3px solid var(--mtb-red); padding:10px; box-shadow:4px 4px 0 var(--mtb-red);">
-                        <label>GAME_BALANCE</label>
-                        <div style="font-size:20px; font-weight:bold;" id="balance-inline">1250 🪙</div>
-                        <div class="trend up">↑ +40% (НЕДЕЛЯ)</div>
+        
+                    <div class="retro-box history-section">
+                        <div class="history-header">ИСТОРИЯ_ОПЕРАЦИЙ:</div>
+                        <div id="history-log-container" class="history-scroll">
+                            </div>
                     </div>
-                </div>
-
-                <div style="background:white; border:3px solid var(--mtb-blue); padding:15px; box-shadow:6px 6px 0 var(--mtb-blue);">
-                    <div class="history-header">ИСТОРИЯ_ЛОГОВ:</div>
-                    <div class="history-scroll">
-                        <div class="history-row"><span class="h-date">12.05</span><span class="h-name">КУПЛЕН_ДИВАН_РЕТРО</span><span class="h-price minus">-500 🪙</span></div>
-                        <div class="history-row"><span class="h-date">11.05</span><span class="h-name">КЭШБЭК_ЗА_КОФЕ</span><span class="h-price plus">+50 🪙</span></div>
-                        <div class="history-row"><span class="h-date">10.05</span><span class="h-name">MTB_ТРАНЗАКЦИЯ:_VARKA</span><span class="h-price bank">-4.50 BYN</span></div>
+                </section>
+        
+                <div id="shop" class="sticky-title">-- МАГАЗИН ПРИКОЛЮХ --</div>
+                <section class="shop-grid">
+                    <div class="shop-item" id="item-cactus">
+                        <div class="item-imgage">🌵</div>
+                        <div class="item-name">ЗОЛОТОЙ_КАКТУС</div>
+                        <div class="item-price">500 🪙</div>
+                        <button class="buy-btn" onclick="openShopModal('cactus')">КУПИТЬ</button>
                     </div>
+                    <div class="shop-item" id="item-map">
+                        <div class="item-imgage">🗺️</div>
+                        <div class="item-name">КАРТА_МИРА</div>
+                        <div class="item-price">600 🪙</div>
+                        <button class="buy-btn" onclick="openShopModal('map')">КУПИТЬ</button>
+                    </div>
+                    <div class="shop-item locked">
+                        <div class="item-imgage">📺</div>
+                        <div class="item-name">ЛАМПОВЫЙ_ТВ</div>
+                        <div class="item-price">5000 🪙</div>
+                        <button class="buy-btn">LOCKED</button>
+                    </div>
+                </section>
+                
+                <div style="height: 80px;"></div> </main>
+            </div>
+        
+        <div id="shop-modal" class="shop-modal-overlay" style="display: none;">
+            <div class="shop-modal-content">
+                <button class="close-modal-btn" onclick="closeShopModal()">[ X ]</button>
+                <div id="modal-item-img-container">
+                    <img id="modal-item-pic" src="" alt="" style="width: 100px; border: 2px solid #000;">
                 </div>
-            </section>
-
-            <div id="shop" class="sticky-title">-- МАГАЗИН ПРИКОЛЮХ --</div>
-            <section class="shop-grid">
-                <div class="shop-item"><div class="item-img">🛋️</div><div class="item-name">РЕТРО ДИВАН</div><div class="item-price">500 🪙</div><button class="buy-btn" onclick="buyItem(500)">КУПИТЬ</button></div>
-                <div class="shop-item"><div class="item-img">📺</div><div class="item-name">ЛАМПОВЫЙ ТВ</div><div class="item-price">800 🪙</div><button class="buy-btn" onclick="buyItem(800)">КУПИТЬ</button></div>
-                <div class="shop-item locked"><div class="item-img">🎸</div><div class="item-name">ЭЛЕКТРОГИТАРА</div><div class="item-price">5000 🪙</div><button class="buy-btn">LOCKED</button></div>
-                <div class="shop-item locked"><div class="item-img">🤖</div><div class="item-name">РОБОТ-ДВОРЕЦКИЙ</div><div class="item-price">9999 🪙</div><button class="buy-btn">LOCKED</button></div>
-            </section>
-            <div style="height: 100px;"></div>
-
-            <div id="mail" class="sticky-title">-- ЦЕНТР УВЕДОМЛЕНИЙ --</div>
-            <section class="section-mail">
-                <div class="email-profile">
-                    <label>SYSTEM_ACCESS_POINT (EMAIL):</label>
-                    <div class="email-val">USER_MTB_2025@GMAIL.COM</div>
+                <h2 id="modal-item-name">ITEM_NAME</h2>
+                <p id="modal-item-desc">Description text...</p>
+                <div class="modal-price-row">
+                    <span>ЦЕНА:</span>
+                    <span id="modal-item-price">0 🪙</span>
                 </div>
-                <div class="history-header">ВХОДЯЩИЕ_СООБЩЕНИЯ:</div>
-                <div class="mail-card unread"><div class="mail-icon">🎁</div><div class="mail-text"><span class="mail-title">КЭШБЭК_ПОДТВЕРЖДЕН</span><span class="mail-desc">Система начислила +50 🪙 за транзакцию "КОФЕ".</span></div><div class="mail-time">10:45</div></div>
-            </section>
+                <button id="buy-confirm-btn" class="buy-confirm-btn">ПОДТВЕРДИТЬ</button>
+            </div>
         </div>
         <div id="tab-game" class="tab-panel">
             <div class="energy-retro">
@@ -585,7 +676,26 @@
         let currentPos = 0;
         let isSpinning = false;
         let secondsToRegen = 1200;
+        let currentProduct = "";
+        let xp = 1250;
+        let xpNextLvl = 10000;
 
+        const shopData = {
+    'cactus': {
+        name: "ЗОЛОТОЙ КАКТУС",
+        desc: "Эксклюзивный декор. Приносит удачу и символизирует рост активов МТБанка!",
+        price: 500,
+        image: "https://i.pinimg.com/736x/e3/15/3e/e3153e12324ff09c4e2afffa328c7c1c.jpg",
+        roomImg: "https://i.pinimg.com/736x/13/8e/b4/138eb4e7ad67432a2e7f11fd85fcf17c.jpg"
+    },
+    'map': {
+        name: "КАРТА МИРА",
+        desc: "Открывает новые горизонты планирования бюджета и кэшбэка по всему миру!",
+        price: 600,
+        image: "https://i.pinimg.com/736x/2a/af/1a/2aaf1a1ede7a2fe27d2f4b28f448cac2.jpg",
+        roomImg: "https://i.pinimg.com/736x/b6/e5/38/b6e53869e0a5eb9a3bf3c413b3c3eba7.jpg"
+    }
+};
         const tokensDisplay = document.getElementById('tokens-display');
         const levelDisplay = document.getElementById('level-display');
         const energyDisplay = document.getElementById('energy-display');
@@ -593,21 +703,34 @@
         const energyCountSpan = document.getElementById('energy-count');
         const energyTimerDiv = document.getElementById('energy-timer');
         const infoLevel = document.getElementById('info-level');
-        const xpBar = document.getElementById('xp-bar');
+        const xpBar = document.getElementById('xp-bar-fill');
         const xpText = document.getElementById('xp-text');
         const myRankTokens = document.getElementById('my-rank-tokens');
         const sidebar = document.getElementById('sidebar');
         const tabHome = document.getElementById('tab-home');
 
         function updateAllDisplays() {
-            tokensDisplay.textContent = `🪙 ${balance}`;
-            levelDisplay.textContent = `⭐️ LVL ${level.toString().padStart(2, '0')}`;
-            energyDisplay.textContent = `⚡️ ${energy}/5`;
+            // 1. Стандартные индикаторы сверху
+            if (tokensDisplay) tokensDisplay.textContent = `🪙 ${balance}`;
+            if (levelDisplay) levelDisplay.textContent = `⭐️ LVL ${level.toString().padStart(2, '0')}`;
+            if (energyDisplay) energyDisplay.textContent = `⚡️ ${energy}/5`;
+
+            document.querySelectorAll('.balance-val').forEach(el => {
+                el.textContent = balance;
+            });
+            document.querySelectorAll('.lvl-val').forEach(el => {
+                el.textContent = level.toString().padStart(2, '0');
+            });
+            if (xpBar) {
+                const xpPercent = (xp / xpNextLvl) * 100;
+                xpBar.style.width = `${xpPercent}%`;
+            }
+            if (xpText) {
+                xpText.textContent = `XP: ${xp} / ${xpNextLvl}`;
+            }
             if (balanceInline) balanceInline.textContent = `${balance} 🪙`;
             if (energyCountSpan) energyCountSpan.textContent = energy;
             if (infoLevel) infoLevel.textContent = level.toString().padStart(2, '0');
-            if (xpBar) xpBar.style.width = `${(balance % 10000) / 100}%`; // условный прогресс
-            if (xpText) xpText.textContent = `XP: ${balance} / 10000`;
             if (myRankTokens) myRankTokens.textContent = `${balance} 🪙`;
         }
 
@@ -620,6 +743,63 @@
                 alert('❌ Недостаточно токенов!');
             }
         };
+        function openShopModal(itemId) {
+    const item = shopData[itemId];
+    if (item) {
+        currentProduct = itemId;
+        document.getElementById('modal-item-name').innerText = item.name;
+        document.getElementById('modal-item-desc').innerText = item.desc;
+        document.getElementById('modal-item-price').innerText = `${item.price} 🪙`;
+        document.getElementById('modal-item-pic').src = item.image;
+        document.getElementById('shop-modal').style.display = 'flex';
+        
+        // Привязываем событие на кнопку "Подтвердить"
+        const confirmBtn = document.getElementById('buy-confirm-btn');
+        confirmBtn.onclick = () => confirmPurchase(itemId);
+    }
+}
+
+function closeShopModal() {
+    document.getElementById('shop-modal').style.display = 'none';
+}
+
+function confirmPurchase(itemId) {
+    const item = shopData[itemId];
+    
+    if (balance >= item.price) {
+        // 1. Списываем баланс
+        balance -= item.price;
+        
+        // 2. Меняем картинку в комнате (код твоего друга)
+        const roomImg = document.getElementById('roomImage');
+        roomImg.src = item.roomImg;
+        
+        // 3. Добавляем в логи
+        addLogEntry(`КУПЛЕН_${item.name}`, item.price, 'minus');
+        
+        // 4. Обновляем цифры на экране
+        updateAllDisplays();
+        
+        // 5. Эффекты
+        alert(`🎉 УСПЕХ! ${item.name} теперь в твоей комнате.`);
+        closeShopModal();
+        
+        // Опционально: можно "залочить" купленный товар
+        const shopItem = document.getElementById(`item-${itemId}`);
+        if (shopItem) shopItem.classList.add('locked');
+        
+    } else {
+        alert("❌ НЕДОСТАТОЧНО ТОКЕНОВ! Нужно больше кэшбэка.");
+    }
+}
+
+// --- ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ ---
+window.onload = () => {
+    updateAllDisplays();
+    // Добавим пару дефолтных логов для красоты
+    addLogEntry("КЭШБЭК_ЗА_КОФЕ", 50, "plus");
+    addLogEntry("MTB_ТРАНЗАКЦИЯ:_VARKA", 4.50, "bank");
+};
 
         function switchTab(tabId) {
             document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
@@ -627,7 +807,7 @@
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.classList.toggle('active', item.dataset.tab === tabId);
             });
-            sidebar.style.display = (tabId === 'game') ? 'none' : 'flex';
+            if (sidebar) sidebar.style.display = (tabId === 'game') ? 'none' : 'flex';
             if (tabId === 'stonks') fetchRates(); 
         }
         document.querySelectorAll('.nav-item[data-tab]').forEach(item => {
@@ -655,6 +835,29 @@
             } catch (error) {
                 document.getElementById('rates-table').innerHTML = '<tr><td colspan="2" style="color:red">ОШИБКА ПОЛУЧЕНИЯ ДАННЫХ</td></tr>';
             }
+        }
+        function addLogEntry(name, amount, type) {
+            const container = document.getElementById('history-log-container');
+            if (!container) return;
+            
+            // Форматируем текущую дату
+            const date = new Date().toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit' });
+            
+            // Настраиваем отображение цены
+            let amountStr = amount;
+            if (type === 'minus') amountStr = `-${amount} 🪙`;
+            else if (type === 'plus') amountStr = `+${amount} 🪙`;
+            else amountStr = `${amount} BYN`; // для банка
+
+            // Создаем новую запись и кидаем её в начало списка
+            const newRow = document.createElement('div');
+            newRow.className = 'history-row';
+            newRow.innerHTML = `
+                <span class="h-date">${date}</span>
+                <span class="h-name">${name}</span>
+                <span class="h-price ${type}">${amountStr}</span>
+            `;
+            container.prepend(newRow);
         }
 
         // Игровая логика
@@ -690,6 +893,9 @@
             } else {
                 clickedBtn.classList.add('wrong');
                 allBtns[correctIndex].classList.add('correct');
+                balance -= reward/2; // Вычитаем столько же, сколько могли получить
+        if (balance < 0) balance = 0;
+        updateAllDisplays();
                 setTimeout(() => document.getElementById('quiz-modal').style.display = 'none', 1500);
             }
         }
@@ -729,6 +935,9 @@
             }, 4500);
         }
         window.spinWheel = spinWheel;
+        window.openShopModal = openShopModal;
+        window.closeShopModal = closeShopModal;
+        window.switchTab = switchTab;
 
         const cols = 4;
         const step = 70;
@@ -754,12 +963,12 @@
                 tile.className = 'board-tile';
                 const rand = Math.random() * 100;
                 if (i === 0) { tile.innerText = 'GO'; tile.style.background = '#2ecc71'; }
-                else if (rand < 10) { // Увеличим шанс до 10%, чтобы чаще выпадала
-    tile.classList.add('jackpot'); // Оставим класс для стилей
-    tile.innerText = '🕹️'; // Иконка геймпада
-    tile.dataset.type = 'catch_game'; // Новый тип события
+                else if (rand < 15) { 
+    tile.classList.add('jackpot');
+    tile.innerText = '🕹️';
+    tile.dataset.type = 'catch_game'; 
 }
-                else if (rand < 15) { tile.classList.add('chance'); tile.innerText = '🎡'; tile.dataset.type = 'wheel'; }
+                else if (rand < 40) { tile.classList.add('chance'); tile.innerText = '🎡'; tile.dataset.type = 'wheel'; }
                 else { tile.classList.add('quiz'); tile.innerText = '❓'; tile.dataset.type = 'quiz'; }
                 const pos = getTilePosition(i);
                 tile.style.transform = `translate(${pos.col * step}px, ${-pos.row * step}px)`;
