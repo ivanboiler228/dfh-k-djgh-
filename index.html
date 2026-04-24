@@ -54,7 +54,7 @@
         #tab-home { scroll-behavior: smooth; padding: 0; }
         #tab-game { padding: 10px 20px; align-items: center; overflow-x: hidden; overflow-y: hidden; }
 
-        /* Главная */
+        /* ===== HOME ===== */
         .section-home {
             min-height: 85vh; display: flex; flex-direction: column;
             align-items: center; justify-content: center; padding: 20px;
@@ -63,7 +63,7 @@
             width: 100%; height: 350px; background-color: white;
             border: 4px solid var(--mtb-blue); box-shadow: 8px 8px 0px var(--mtb-red);
         }
-       
+
         .sticky-title {
             position: sticky; top: -1px; background: var(--mtb-blue); color: white;
             padding: 10px; font-size: 16px; font-weight: bold;
@@ -124,6 +124,8 @@
         .mail-title { display: block; font-weight: 900; font-size: 13px; color: var(--mtb-blue); margin-bottom: 3px; text-transform: uppercase; }
         .mail-desc { display: block; font-size: 10px; color: #444; line-height: 1.2; }
         .mail-time { font-size: 9px; font-weight: bold; color: #888; align-self: flex-start; }
+
+        /* ===== GAME ===== */
         .game-retro-title {
             background: var(--mtb-red); color: white; padding: 12px 20px;
             text-transform: uppercase; font-weight: 900; font-size: 18px;
@@ -215,6 +217,8 @@
         .wheel-part { position: absolute; width: 100%; height: 100%; display: flex; justify-content: center; align-items: flex-start; padding-top: 20px; font-weight: bold; color: white; font-family: 'Courier New', monospace; text-shadow: 2px 2px 0 black; }
         .part-1 { transform: rotate(36deg); } .part-2 { transform: rotate(108deg); } .part-3 { transform: rotate(180deg); } .part-4 { transform: rotate(252deg); } .part-5 { transform: rotate(324deg); }
         .wheel-pointer { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); z-index: 100; font-size: 40px; color: #f1c40f; filter: drop-shadow(0 4px 2px rgba(0,0,0,0.5)); }
+
+        /* ===== TOP ===== */
         .leaderboard-table { width: 100%; border-collapse: collapse; font-family: 'Courier New', monospace; margin: 20px 0; }
         .leaderboard-table th { background: var(--mtb-blue); color: white; padding: 8px; border: 2px solid black; }
         .leaderboard-table td { background: white; padding: 8px; border: 2px solid var(--mtb-blue); text-align: center; }
@@ -238,6 +242,8 @@
             border: 3px solid black; box-shadow: 4px 4px 0px var(--mtb-blue); text-decoration: none;
         }
         .earn-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0px var(--mtb-blue); }
+
+        /* ===== FRIENDS ===== */
         .friend-card {
             display: flex; align-items: center; background: white; border: 3px solid var(--mtb-blue);
             padding: 12px; box-shadow: 4px 4px 0px var(--mtb-blue); cursor: pointer; position: relative;
@@ -270,6 +276,8 @@
             text-transform: uppercase; border: 3px solid black; box-shadow: 4px 4px 0 #000;
         }
         .invite-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 #000; background-color: #af0712; }
+
+        /* ===== STONKS ===== */
         .retro-table { width: 100%; background: white; border: 3px solid var(--mtb-blue); box-shadow: 6px 6px 0px var(--mtb-blue); border-collapse: collapse; margin-bottom: 30px; }
         .retro-table th { background: var(--mtb-blue); color: white; padding: 10px; text-align: left; font-size: 12px; }
         .retro-table td { padding: 15px 10px; border-bottom: 1px dashed var(--mtb-blue); font-weight: 900; font-size: 16px; }
@@ -287,159 +295,153 @@
         .nav-item.active { opacity: 1; }
         .nav-icon { font-size: 24px; color: white; filter: drop-shadow(2px 2px 0px var(--mtb-red)); }
         .nav-text { color: white; font-size: 8px; font-weight: bold; margin-top: 2px; }
-        /* Стили для мини-игры "Поймай монету" */
-.catch-game-content {
-    max-width: 420px;
-    width: 95%;
-    padding: 15px;
-    position: relative;
-}
 
-.game-status-bar {
-    display: flex;
-    justify-content: space-between;
-    background: #111;
-    color: #00ff00; /* Неоновый зеленый */
-    padding: 8px 15px;
-    font-family: 'Courier New', monospace;
-    font-weight: bold;
-    border: 3px solid var(--mtb-blue);
-    margin-bottom: 10px;
-    box-shadow: 2px 2px 0 black;
-}
+        /* ===== CATCH GAME (вкладка GAME) ===== */
+        .catch-game-content {
+            max-width: 420px;
+            width: 95%;
+            padding: 15px;
+            position: relative;
+        }
 
-#game-area {
-    width: 100%;
-    height: 350px; /* Высота игровой зоны */
-    background-color: #f0f0f0;
-    background-image: linear-gradient(#e0e0e0 1px, transparent 1px), linear-gradient(90deg, #e0e0e0 1px, transparent 1px);
-    background-size: 20px 20px;
-    border: 4px solid var(--mtb-blue);
-    position: relative;
-    overflow: hidden; /* Чтобы монеты не вылетали */
-    touch-action: none; /* Важно для корректного Touch-управления на телефоне */
-}
+        .game-status-bar {
+            display: flex;
+            justify-content: space-between;
+            background: #111;
+            color: #00ff00;
+            padding: 8px 15px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            border: 3px solid var(--mtb-blue);
+            margin-bottom: 10px;
+            box-shadow: 2px 2px 0 black;
+        }
 
-/* Стили для корзины (логотипа МТБанка) */
-#basket {
-    position: absolute;
-    bottom: 10px;
-    left: 50%; /* Начальная позиция по центру */
-    transform: translateX(-50%);
-    width: 100px; /* Ширина логотипа */
-    height: auto;
-    border: 2px solid black;
-    box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
-    will-change: left; /* Оптимизация для плавного движения */
-    pointer-events: none; /* Чтобы палец не "цеплялся" за сам логотип */
-}
+        #game-area {
+            width: 100%;
+            height: 350px;
+            background-color: #f0f0f0;
+            background-image: linear-gradient(#e0e0e0 1px, transparent 1px), linear-gradient(90deg, #e0e0e0 1px, transparent 1px);
+            background-size: 20px 20px;
+            border: 4px solid var(--mtb-blue);
+            position: relative;
+            overflow: hidden;
+            touch-action: none;
+        }
 
-/* Стили для падающих монет */
-.coin {
-    position: absolute;
-    width: 35px;
-    height: 35px;
-    background-color: #f1c40f; /* Золотой цвет */
-    border: 3px solid #b8860b;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: #b8860b;
-    font-size: 18px;
-    box-shadow: inset 0 0 5px rgba(255,255,255,0.8), 2px 2px 0 rgba(0,0,0,0.3);
-    z-index: 10;
-    top: -40px; /* Начинают падение из-за границы */
-    
-    /* CSS Анимация падения */
-    animation: fall 2s linear forwards; 
-}
+        #basket {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: auto;
+            border: 2px solid black;
+            box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+            will-change: left;
+            pointer-events: none;
+        }
 
-/* Анимация падения монеты */
-@keyframes fall {
-    to {
-        top: 100%; /* Падают до самого низа */
-    }
-}
+        .coin {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            background-color: #f1c40f;
+            border: 3px solid #b8860b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #b8860b;
+            font-size: 18px;
+            box-shadow: inset 0 0 5px rgba(255,255,255,0.8), 2px 2px 0 rgba(0,0,0,0.3);
+            z-index: 10;
+            top: -40px;
+            animation: fall 2s linear forwards;
+        }
 
-.game-instruction {
-    font-size: 10px;
-    color: #666;
-    margin-top: 10px;
-    font-weight: bold;
-}
-/* Интегрированные стили Main */
-.main-scroll-area {
-    flex: 1; overflow-y: auto; background: var(--mtb-bg);
-}
+        @keyframes fall {
+            to {
+                top: 100%;
+            }
+        }
 
-.room-container {
-    width: 100%; height: 300px; display: flex; justify-content: center;
-    background: #fff; border-bottom: 4px solid var(--mtb-blue);
-}
+        .game-instruction {
+            font-size: 10px;
+            color: #666;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .main-scroll-area {
+            flex: 1; overflow-y: auto; background: var(--mtb-bg);
+        }
 
-.room_img { width: 100%; height: 100%; object-fit: cover; }
+        .room-container {
+            width: 100%; height: 300px; display: flex; justify-content: center;
+            background: #fff; border-bottom: 4px solid var(--mtb-blue);
+        }
 
-.sticky-title {
-    position: sticky; top: 0; background: var(--mtb-blue);
-    color: white; padding: 12px; font-weight: bold; text-align: center;
-    z-index: 10; border-top: 4px solid var(--mtb-red);
-}
+        .room_img { width: 100%; height: 100%; object-fit: cover; }
 
-.finance-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px;
-}
+        .sticky-title {
+            position: sticky; top: 0; background: var(--mtb-blue);
+            color: white; padding: 12px; font-weight: bold; text-align: center;
+            z-index: 10; border-top: 4px solid var(--mtb-red);
+        }
 
-.fin-card {
-    background: white; border: 3px solid var(--mtb-blue); padding: 10px;
-    text-align: center; box-shadow: 4px 4px 0 black;
-}
+        .finance-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px;
+        }
 
-.fin-card label { font-size: 10px; opacity: 0.7; display: block; }
-.fin-card .amount { font-size: 14px; font-weight: bold; margin: 5px 0; }
+        .fin-card {
+            background: white; border: 3px solid var(--mtb-blue); padding: 10px;
+            text-align: center; box-shadow: 4px 4px 0 black;
+        }
 
-.shop-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px;
-    background: #ccc;
-}
+        .fin-card label { font-size: 10px; opacity: 0.7; display: block; }
+        .fin-card .amount { font-size: 14px; font-weight: bold; margin: 5px 0; }
 
-.shop-item {
-    background: white; border: 3px solid var(--mtb-blue); padding: 10px;
-    display: flex; flex-direction: column; align-items: center;
-    box-shadow: 3px 3px 0 black;
-}
+        .shop-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px;
+            background: #ccc;
+        }
 
-.shop-item.locked { opacity: 0.5; filter: grayscale(1); }
+        .shop-item {
+            background: white; border: 3px solid var(--mtb-blue); padding: 10px;
+            display: flex; flex-direction: column; align-items: center;
+            box-shadow: 3px 3px 0 black;
+        }
 
-.item-imgage { font-size: 40px; margin-bottom: 5px; }
+        .shop-item.locked { opacity: 0.5; filter: grayscale(1); }
 
-.buy-btn {
-    background: var(--mtb-red); color: white; border: 2px solid black;
-    width: 100%; padding: 5px; font-family: inherit; font-weight: bold;
-}
+        .item-imgage { font-size: 40px; margin-bottom: 5px; }
 
-/* Модалка */
-.shop-modal-overlay {
-    position: fixed; top:0; left:0; width:100%; height:100%;
-    background: rgba(0,0,0,0.8); z-index: 10000; display: flex;
-    justify-content: center; align-items: center;
-}
+        .buy-btn {
+            background: var(--mtb-red); color: white; border: 2px solid black;
+            width: 100%; padding: 5px; font-family: inherit; font-weight: bold;
+        }
 
-.shop-modal-content {
-    background: white; width: 90%; max-width: 350px; padding: 20px;
-    border: 4px solid var(--mtb-blue); box-shadow: 10px 10px 0 var(--mtb-red);
-}
+        .shop-modal-overlay {
+            position: fixed; top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.8); z-index: 10000; display: flex;
+            justify-content: center; align-items: center;
+        }
 
-.history-scroll {
-    max-height: 150px; overflow-y: auto; padding: 10px;
-    background: #fdfdfd; font-size: 11px;
-}
+        .shop-modal-content {
+            background: white; width: 90%; max-width: 350px; padding: 20px;
+            border: 4px solid var(--mtb-blue); box-shadow: 10px 10px 0 var(--mtb-red);
+        }
 
-.history-row {
-    display: flex; justify-content: space-between; border-bottom: 1px dashed #ccc;
-    padding: 5px 0;
-}
+        .history-scroll {
+            max-height: 150px; overflow-y: auto; padding: 10px;
+            background: #fdfdfd; font-size: 11px;
+        }
+
+        .history-row {
+            display: flex; justify-content: space-between; border-bottom: 1px dashed #ccc;
+            padding: 5px 0;
+        }
     </style>
 </head>
 <body>
@@ -452,6 +454,7 @@
 
     <div class="tabs-container">
 
+        <!-- Вкладка HOME -->
         <div id="tab-home" class="tab-panel active">
             <main class="main-scroll-area">
                 <section class="section-home">
@@ -459,7 +462,7 @@
                         <img id="roomImage" class="room_img" src="https://i.pinimg.com/736x/95/9f/0a/959f0a09bfbdfa588d61b2106d348d85.jpg" alt="Home">
                     </div>
                 </section>
-        
+
                 <div class="sticky-title">ЛИЧНАЯ_ИНФОРМАЦИЯ</div>
                 <section class="section-info">
                     <div class="retro-box level-section">
@@ -475,7 +478,7 @@
                             <span class="blink-text">MTB_SECURE_CONNECTION...</span>
                         </div>
                     </div>
-        
+
                     <div class="finance-grid">
                         <div class="fin-card">
                             <label>BANK_DEBIT</label>
@@ -488,14 +491,14 @@
                             <div class="trend up">+40% (НЕДЕЛЯ)</div>
                         </div>
                     </div>
-        
+
                     <div class="retro-box history-section">
                         <div class="history-header">ИСТОРИЯ_ОПЕРАЦИЙ:</div>
                         <div id="history-log-container" class="history-scroll">
-                            </div>
+                        </div>
                     </div>
                 </section>
-        
+
                 <div id="shop" class="sticky-title">-- МАГАЗИН ПРИКОЛЮХ --</div>
                 <section class="shop-grid">
                     <div class="shop-item" id="item-cactus">
@@ -517,10 +520,12 @@
                         <button class="buy-btn">LOCKED</button>
                     </div>
                 </section>
-                
-                <div style="height: 80px;"></div> </main>
-            </div>
-        
+
+                <div style="height: 80px;"></div>
+            </main>
+        </div>
+
+        <!-- Модальное окно магазина -->
         <div id="shop-modal" class="shop-modal-overlay" style="display: none;">
             <div class="shop-modal-content">
                 <button class="close-modal-btn" onclick="closeShopModal()">[ X ]</button>
@@ -536,6 +541,8 @@
                 <button id="buy-confirm-btn" class="buy-confirm-btn">ПОДТВЕРДИТЬ</button>
             </div>
         </div>
+
+        <!-- Вкладка GAME -->
         <div id="tab-game" class="tab-panel">
             <div class="energy-retro">
                 <span>⚡️ <span id="energy-count">5</span>/5</span>
@@ -552,7 +559,7 @@
             </div>
         </div>
 
-      
+        <!-- Вкладка TOP -->
         <div id="tab-top" class="tab-panel" style="padding: 20px;">
             <div class="game-retro-title">🏆 ТОП ИГРОКОВ</div>
             <div class="player-row rank-1"><div class="rank-num">01</div><div class="player-info"><span class="player-name">АЛЕКСАНДР В.</span></div><div class="player-score">100 000 🪙</div></div>
@@ -572,7 +579,7 @@
             </div>
         </div>
 
-      
+        <!-- Вкладка FRIENDS -->
         <div id="tab-friends" class="tab-panel" style="padding: 20px;">
             <div class="game-retro-title">👥 ДРУЗЬЯ</div>
             <div class="friend-card">
@@ -599,6 +606,7 @@
             </div>
         </div>
 
+        <!-- Вкладка STONKS -->
         <div id="tab-stonks" class="tab-panel" style="padding: 20px;">
             <div class="sticky-title">-- EXCHANGE_RATES_NBRB --</div>
             <table class="retro-table">
@@ -626,7 +634,7 @@
     </nav>
 </div>
 
-
+<!-- Модальные окна -->
 <div id="quiz-modal" class="modal-overlay" style="display: none;">
     <div class="modal-content">
         <h3 class="modal-title">🏦 ВОПРОС ОТ БАНКА</h3>
@@ -651,6 +659,7 @@
         <button id="spin-btn" class="retro-btn" onclick="spinWheel()">КРУТИТЬ! 🚀</button>
     </div>
 </div>
+
 <div id="catch-game-modal" class="modal-overlay" style="display: none;">
     <div class="modal-content catch-game-content">
         <h3 class="modal-title">💰 ЛОВИ КЭШБЭК!</h3>
@@ -658,18 +667,16 @@
             <div id="game-timer">ВРЕМЯ: 10с</div>
             <div id="game-score">СЧЕТ: 0</div>
         </div>
-        
         <div id="game-area">
             <img src="https://oceanminsk.by/wp-content/uploads/2022/10/logo-mtbank.jpg" alt="MTBank" id="basket">
         </div>
-        
         <div class="game-instruction">[ ВОДИ ПАЛЬЦЕМ, ЧТОБЫ ЛОВИТЬ ]</div>
     </div>
 </div>
 
 <script>
     (function() {
-       
+
         let balance = 1250;
         let level = 5;
         let energy = 5;
@@ -681,21 +688,21 @@
         let xpNextLvl = 10000;
 
         const shopData = {
-    'cactus': {
-        name: "ЗОЛОТОЙ КАКТУС",
-        desc: "Эксклюзивный декор. Приносит удачу и символизирует рост активов МТБанка!",
-        price: 500,
-        image: "https://i.pinimg.com/736x/e3/15/3e/e3153e12324ff09c4e2afffa328c7c1c.jpg",
-        roomImg: "https://i.pinimg.com/736x/13/8e/b4/138eb4e7ad67432a2e7f11fd85fcf17c.jpg"
-    },
-    'map': {
-        name: "КАРТА МИРА",
-        desc: "Открывает новые горизонты планирования бюджета и кэшбэка по всему миру!",
-        price: 600,
-        image: "https://i.pinimg.com/736x/2a/af/1a/2aaf1a1ede7a2fe27d2f4b28f448cac2.jpg",
-        roomImg: "https://i.pinimg.com/736x/b6/e5/38/b6e53869e0a5eb9a3bf3c413b3c3eba7.jpg"
-    }
-};
+            'cactus': {
+                name: "ЗОЛОТОЙ КАКТУС",
+                desc: "Эксклюзивный декор. Приносит удачу и символизирует рост активов МТБанка!",
+                price: 500,
+                image: "https://i.pinimg.com/736x/e3/15/3e/e3153e12324ff09c4e2afffa328c7c1c.jpg",
+                roomImg: "https://i.pinimg.com/736x/13/8e/b4/138eb4e7ad67432a2e7f11fd85fcf17c.jpg"
+            },
+            'map': {
+                name: "КАРТА МИРА",
+                desc: "Открывает новые горизонты планирования бюджета и кэшбэка по всему миру!",
+                price: 600,
+                image: "https://i.pinimg.com/736x/2a/af/1a/2aaf1a1ede7a2fe27d2f4b28f448cac2.jpg",
+                roomImg: "https://i.pinimg.com/736x/b6/e5/38/b6e53869e0a5eb9a3bf3c413b3c3eba7.jpg"
+            }
+        };
         const tokensDisplay = document.getElementById('tokens-display');
         const levelDisplay = document.getElementById('level-display');
         const energyDisplay = document.getElementById('energy-display');
@@ -710,7 +717,6 @@
         const tabHome = document.getElementById('tab-home');
 
         function updateAllDisplays() {
-            // 1. Стандартные индикаторы сверху
             if (tokensDisplay) tokensDisplay.textContent = `🪙 ${balance}`;
             if (levelDisplay) levelDisplay.textContent = `⭐️ LVL ${level.toString().padStart(2, '0')}`;
             if (energyDisplay) energyDisplay.textContent = `⚡️ ${energy}/5`;
@@ -744,62 +750,53 @@
             }
         };
         function openShopModal(itemId) {
-    const item = shopData[itemId];
-    if (item) {
-        currentProduct = itemId;
-        document.getElementById('modal-item-name').innerText = item.name;
-        document.getElementById('modal-item-desc').innerText = item.desc;
-        document.getElementById('modal-item-price').innerText = `${item.price} 🪙`;
-        document.getElementById('modal-item-pic').src = item.image;
-        document.getElementById('shop-modal').style.display = 'flex';
-        
-        // Привязываем событие на кнопку "Подтвердить"
-        const confirmBtn = document.getElementById('buy-confirm-btn');
-        confirmBtn.onclick = () => confirmPurchase(itemId);
-    }
-}
+            const item = shopData[itemId];
+            if (item) {
+                currentProduct = itemId;
+                document.getElementById('modal-item-name').innerText = item.name;
+                document.getElementById('modal-item-desc').innerText = item.desc;
+                document.getElementById('modal-item-price').innerText = `${item.price} 🪙`;
+                document.getElementById('modal-item-pic').src = item.image;
+                document.getElementById('shop-modal').style.display = 'flex';
 
-function closeShopModal() {
-    document.getElementById('shop-modal').style.display = 'none';
-}
+                const confirmBtn = document.getElementById('buy-confirm-btn');
+                confirmBtn.onclick = () => confirmPurchase(itemId);
+            }
+        }
 
-function confirmPurchase(itemId) {
-    const item = shopData[itemId];
-    
-    if (balance >= item.price) {
-        // 1. Списываем баланс
-        balance -= item.price;
-        
-        // 2. Меняем картинку в комнате (код твоего друга)
-        const roomImg = document.getElementById('roomImage');
-        roomImg.src = item.roomImg;
-        
-        // 3. Добавляем в логи
-        addLogEntry(`КУПЛЕН_${item.name}`, item.price, 'minus');
-        
-        // 4. Обновляем цифры на экране
-        updateAllDisplays();
-        
-        // 5. Эффекты
-        alert(`🎉 УСПЕХ! ${item.name} теперь в твоей комнате.`);
-        closeShopModal();
-        
-        // Опционально: можно "залочить" купленный товар
-        const shopItem = document.getElementById(`item-${itemId}`);
-        if (shopItem) shopItem.classList.add('locked');
-        
-    } else {
-        alert("❌ НЕДОСТАТОЧНО ТОКЕНОВ! Нужно больше кэшбэка.");
-    }
-}
+        function closeShopModal() {
+            document.getElementById('shop-modal').style.display = 'none';
+        }
 
-// --- ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ ---
-window.onload = () => {
-    updateAllDisplays();
-    // Добавим пару дефолтных логов для красоты
-    addLogEntry("КЭШБЭК_ЗА_КОФЕ", 50, "plus");
-    addLogEntry("MTB_ТРАНЗАКЦИЯ:_VARKA", 4.50, "bank");
-};
+        function confirmPurchase(itemId) {
+            const item = shopData[itemId];
+
+            if (balance >= item.price) {
+                balance -= item.price;
+
+                const roomImg = document.getElementById('roomImage');
+                roomImg.src = item.roomImg;
+
+                addLogEntry(`КУПЛЕН_${item.name}`, item.price, 'minus');
+
+                updateAllDisplays();
+
+                alert(`🎉 УСПЕХ! ${item.name} теперь в твоей комнате.`);
+                closeShopModal();
+
+                const shopItem = document.getElementById(`item-${itemId}`);
+                if (shopItem) shopItem.classList.add('locked');
+
+            } else {
+                alert("❌ НЕДОСТАТОЧНО ТОКЕНОВ! Нужно больше кэшбэка.");
+            }
+        }
+
+        window.onload = () => {
+            updateAllDisplays();
+            addLogEntry("КЭШБЭК_ЗА_КОФЕ", 50, "plus");
+            addLogEntry("MTB_ТРАНЗАКЦИЯ:_VARKA", 4.50, "bank");
+        };
 
         function switchTab(tabId) {
             document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
@@ -808,7 +805,7 @@ window.onload = () => {
                 item.classList.toggle('active', item.dataset.tab === tabId);
             });
             if (sidebar) sidebar.style.display = (tabId === 'game') ? 'none' : 'flex';
-            if (tabId === 'stonks') fetchRates(); 
+            if (tabId === 'stonks') fetchRates();
         }
         document.querySelectorAll('.nav-item[data-tab]').forEach(item => {
             item.addEventListener('click', (e) => switchTab(item.dataset.tab));
@@ -839,17 +836,14 @@ window.onload = () => {
         function addLogEntry(name, amount, type) {
             const container = document.getElementById('history-log-container');
             if (!container) return;
-            
-            // Форматируем текущую дату
+
             const date = new Date().toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit' });
-            
-            // Настраиваем отображение цены
+
             let amountStr = amount;
             if (type === 'minus') amountStr = `-${amount} 🪙`;
             else if (type === 'plus') amountStr = `+${amount} 🪙`;
-            else amountStr = `${amount} BYN`; // для банка
+            else amountStr = `${amount} BYN`;
 
-            // Создаем новую запись и кидаем её в начало списка
             const newRow = document.createElement('div');
             newRow.className = 'history-row';
             newRow.innerHTML = `
@@ -860,7 +854,6 @@ window.onload = () => {
             container.prepend(newRow);
         }
 
-        // Игровая логика
         const bankQuestions = [
             { q: "Что такое грейс-период по карте Халва?", options:["Штраф за просрочку", "Период без процентов", "Плата за обслуживание"], correct: 1, reward: 50 },
             { q: "В какой валюте выгоднее хранить подушку безопасности?", options:["В криптовалюте", "В разных валютах", "Только в рублях"], correct: 1, reward: 30 },
@@ -893,9 +886,9 @@ window.onload = () => {
             } else {
                 clickedBtn.classList.add('wrong');
                 allBtns[correctIndex].classList.add('correct');
-                balance -= reward/2; // Вычитаем столько же, сколько могли получить
-        if (balance < 0) balance = 0;
-        updateAllDisplays();
+                balance -= reward/2;
+                if (balance < 0) balance = 0;
+                updateAllDisplays();
                 setTimeout(() => document.getElementById('quiz-modal').style.display = 'none', 1500);
             }
         }
@@ -909,11 +902,11 @@ window.onload = () => {
 
             const rand = Math.random() * 100;
             let sectorIndex;
-            if (rand < 2) sectorIndex = 4;      // 100 монет
-            else if (rand < 15) sectorIndex = 3; // 50 монет
-            else if (rand < 40) sectorIndex = 2; // 30 монет
-            else if (rand < 70) sectorIndex = 1; // 20 монет
-            else sectorIndex = 0;                // 10 монет
+            if (rand < 2) sectorIndex = 4;
+            else if (rand < 15) sectorIndex = 3;
+            else if (rand < 40) sectorIndex = 2;
+            else if (rand < 70) sectorIndex = 1;
+            else sectorIndex = 0;
 
             const startAngle = sectorIndex * 72;
             const finalRotation = 3600 + (360 - startAngle);
@@ -963,11 +956,11 @@ window.onload = () => {
                 tile.className = 'board-tile';
                 const rand = Math.random() * 100;
                 if (i === 0) { tile.innerText = 'GO'; tile.style.background = '#2ecc71'; }
-                else if (rand < 15) { 
-    tile.classList.add('jackpot');
-    tile.innerText = '🕹️';
-    tile.dataset.type = 'catch_game'; 
-}
+                else if (rand < 15) {
+                    tile.classList.add('jackpot');
+                    tile.innerText = '🕹️';
+                    tile.dataset.type = 'catch_game';
+                }
                 else if (rand < 40) { tile.classList.add('chance'); tile.innerText = '🎡'; tile.dataset.type = 'wheel'; }
                 else { tile.classList.add('quiz'); tile.innerText = '❓'; tile.dataset.type = 'quiz'; }
                 const pos = getTilePosition(i);
@@ -1046,7 +1039,7 @@ window.onload = () => {
             if(!currentTile) return;
             const type = currentTile.dataset.type;
             if (type === 'catch_game') {
-        startCatchGame();
+                startCatchGame();
             } else if (type === 'wheel') {
                 document.getElementById('wheel-modal').style.display = 'flex';
             } else if (type === 'quiz') {
@@ -1055,188 +1048,154 @@ window.onload = () => {
         }
 
         document.getElementById('roll-btn').addEventListener('click', playTurn);
-// --- ЛОГИКА МИНИ-ИГРЫ "ПОЙМАЙ МОНЕТУ" ---
 
-const catchModal = document.getElementById('catch-game-modal');
-const gameArea = document.getElementById('game-area');
-const basket = document.getElementById('basket');
-const timerDisplay = document.getElementById('game-timer');
-const scoreDisplay = document.getElementById('game-score');
+        const catchModal = document.getElementById('catch-game-modal');
+        const gameArea = document.getElementById('game-area');
+        const basket = document.getElementById('basket');
+        const timerDisplay = document.getElementById('game-timer');
+        const scoreDisplay = document.getElementById('game-score');
 
-let gameScore = 0;
-let gameTimeLeft = 10;
-let gameInterval;
-let coinSpawnInterval;
-let isGameActive = false;
+        let gameScore = 0;
+        let gameTimeLeft = 10;
+        let gameInterval;
+        let coinSpawnInterval;
+        let isGameActive = false;
 
-// Функция запуска игры
-function startCatchGame() {
-    if (isGameActive) return;
-    isGameActive = true;
-    
-    // Сброс параметров
-    gameScore = 0;
-    gameTimeLeft = 10;
-    scoreDisplay.textContent = `СЧЕТ: ${gameScore}`;
-    timerDisplay.textContent = `ВРЕМЯ: ${gameTimeLeft}с`;
-    
-    // Очистка арены от старых монет
-    const oldCoins = gameArea.querySelectorAll('.coin');
-    oldCoins.forEach(coin => coin.remove());
-    
-    // Центрируем логотип
-    basket.style.left = '50%';
-    
-    // Показываем модалку
-    catchModal.style.display = 'flex';
-    
-    // Запускаем таймеры
-    gameInterval = setInterval(updateGameTimer, 1000);
-    coinSpawnInterval = setInterval(spawnCoin, 500); // Спавн монеты каждые 0.5 сек
-}
+        function startCatchGame() {
+            if (isGameActive) return;
+            isGameActive = true;
 
-// Обновление таймера игры
-function updateGameTimer() {
-    gameTimeLeft--;
-    timerDisplay.textContent = `ВРЕМЯ: ${gameTimeLeft}с`;
-    
-    if (gameTimeLeft <= 0) {
-        endCatchGame();
-    }
-}
-
-// Создание новой падающей монеты
-function spawnCoin() {
-    if (!isGameActive) return;
-    
-    const coin = document.createElement('div');
-    coin.className = 'coin';
-    coin.textContent = '🪙';
-    
-    // Случайная позиция по горизонтали (X)
-    const areaWidth = gameArea.offsetWidth;
-    const coinSize = 35; // Из CSS
-    const randomX = Math.random() * (areaWidth - coinSize);
-    
-    coin.style.left = `${randomX}px`;
-    
-    // Уникальный ID для монеты, чтобы отслеживать её
-    const coinId = 'coin_' + Date.now() + Math.random();
-    coin.id = coinId;
-    
-    gameArea.appendChild(coin);
-    
-    // Запускаем проверку столкновения для этой монеты
-    checkCollision(coin);
-    
-    // Удаляем монету из DOM после завершения анимации (если не поймали)
-    setTimeout(() => {
-        if (coin.parentNode === gameArea) {
-            gameArea.removeChild(coin);
-        }
-    }, 2100); // Чуть больше времени анимации из CSS
-}
-
-// Проверка столкновения монеты с логотипом МТБанка
-function checkCollision(coin) {
-    if (!isGameActive) return;
-    
-    // Интервал для постоянной проверки позиции пока монета падает
-    const collisionInterval = setInterval(() => {
-        if (!isGameActive || !coin.parentNode) {
-            clearInterval(collisionInterval);
-            return;
-        }
-        
-        const basketRect = basket.getBoundingClientRect();
-        const coinRect = coin.getBoundingClientRect();
-        
-        // Логика столкновения: если монета пересекается с логотипом
-        if (
-            coinRect.bottom >= basketRect.top && // Монета долетела до верха логотипа
-            coinRect.top <= basketRect.bottom && // Монета не пролетела ниже логотипа
-            coinRect.right >= basketRect.left && // Монета правее левой границы
-            coinRect.left <= basketRect.right    // Монета левее правой границы
-        ) {
-            // ПОЙМАЛИ!
-            gameScore += 10;
+            gameScore = 0;
+            gameTimeLeft = 10;
             scoreDisplay.textContent = `СЧЕТ: ${gameScore}`;
-            
-            // Удаляем монету
-            if (coin.parentNode === gameArea) {
-                gameArea.removeChild(coin);
-            }
-            clearInterval(collisionInterval);
-            
-            // Визуальный эффект попадания (кратковременное свечение логотипа)
-            basket.style.boxShadow = '0 0 15px #f1c40f';
-            setTimeout(() => {
-                basket.style.boxShadow = '3px 3px 0 rgba(0,0,0,0.2)';
-            }, 150);
+            timerDisplay.textContent = `ВРЕМЯ: ${gameTimeLeft}с`;
+
+            const oldCoins = gameArea.querySelectorAll('.coin');
+            oldCoins.forEach(coin => coin.remove());
+
+            basket.style.left = '50%';
+
+            catchModal.style.display = 'flex';
+
+            gameInterval = setInterval(updateGameTimer, 1000);
+            coinSpawnInterval = setInterval(spawnCoin, 500);
         }
-    }, 50); // Проверяем каждые 50мс
-}
 
-// Завершение игры
-function endCatchGame() {
-    isGameActive = false;
-    clearInterval(gameInterval);
-    clearInterval(coinSpawnInterval);
-    
-    // Начисляем токены
-    balance += gameScore;
-    updateAllDisplays();
-    
-    alert(`🎉 ИГРА ОКОНЧЕНА!\n\nТы поймал кэшбэка на ${gameScore} 🪙!`);
-    
-    // Закрываем модалку
-    catchModal.style.display = 'none';
-}
+        function updateGameTimer() {
+            gameTimeLeft--;
+            timerDisplay.textContent = `ВРЕМЯ: ${gameTimeLeft}с`;
 
-// --- УПРАВЛЕНИЕ ПАЛЬЦЕМ НА ТЕЛЕФОНЕ ---
+            if (gameTimeLeft <= 0) {
+                endCatchGame();
+            }
+        }
 
-// Обработка движения пальца по игровой зоне
-gameArea.addEventListener('touchmove', function(e) {
-    if (!isGameActive) return;
-    
-    // Предотвращаем скролл страницы пока водим пальцем
-    e.preventDefault();
-    
-    // Получаем координаты первого касания
-    const touch = e.touches[0];
-    
-    // Получаем позицию игровой зоны на экране
-    const areaRect = gameArea.getBoundingClientRect();
-    
-    // Рассчитываем позицию пальца относительно левого края игровой зоны
-    let touchX = touch.clientX - areaRect.left;
-    
-    // Ограничиваем движение, чтобы логотип не улетал за края
-    const basketWidth = basket.offsetWidth;
-    if (touchX < basketWidth / 2) touchX = basketWidth / 2;
-    if (touchX > areaRect.width - basketWidth / 2) touchX = areaRect.width - basketWidth / 2;
-    
-    // Обновляем позицию логотипа (используем `left` для совместимости с `transform: translateX(-50%)`)
-    basket.style.left = `${touchX}px`;
-}, { passive: false }); // Важно для preventDefault()
+        function spawnCoin() {
+            if (!isGameActive) return;
 
-// Дублируем управление мышкой (для тестов на ПК)
-gameArea.addEventListener('mousemove', function(e) {
-    if (!isGameActive) return;
-    const areaRect = gameArea.getBoundingClientRect();
-    let mouseX = e.clientX - areaRect.left;
-    const basketWidth = basket.offsetWidth;
-    if (mouseX < basketWidth / 2) mouseX = basketWidth / 2;
-    if (mouseX > areaRect.width - basketWidth / 2) mouseX = areaRect.width - basketWidth / 2;
-    basket.style.left = `${mouseX}px`;
-});
+            const coin = document.createElement('div');
+            coin.className = 'coin';
+            coin.textContent = '🪙';
 
-// Добавляем возможность закрыть модалку по клику на оверлей (если игра не идет)
-catchModal.addEventListener('click', e => {
-    if (e.target === catchModal && !isGameActive) catchModal.style.display = 'none';
-});
+            const areaWidth = gameArea.offsetWidth;
+            const coinSize = 35;
+            const randomX = Math.random() * (areaWidth - coinSize);
 
-// --- КОНЕЦ ЛОГИКИ МИНИ-ИГРЫ ---
+            coin.style.left = `${randomX}px`;
+
+            const coinId = 'coin_' + Date.now() + Math.random();
+            coin.id = coinId;
+
+            gameArea.appendChild(coin);
+
+            checkCollision(coin);
+
+            setTimeout(() => {
+                if (coin.parentNode === gameArea) {
+                    gameArea.removeChild(coin);
+                }
+            }, 2100);
+        }
+
+        function checkCollision(coin) {
+            if (!isGameActive) return;
+
+            const collisionInterval = setInterval(() => {
+                if (!isGameActive || !coin.parentNode) {
+                    clearInterval(collisionInterval);
+                    return;
+                }
+
+                const basketRect = basket.getBoundingClientRect();
+                const coinRect = coin.getBoundingClientRect();
+
+                if (
+                    coinRect.bottom >= basketRect.top &&
+                    coinRect.top <= basketRect.bottom &&
+                    coinRect.right >= basketRect.left &&
+                    coinRect.left <= basketRect.right
+                ) {
+                    gameScore += 10;
+                    scoreDisplay.textContent = `СЧЕТ: ${gameScore}`;
+
+                    if (coin.parentNode === gameArea) {
+                        gameArea.removeChild(coin);
+                    }
+                    clearInterval(collisionInterval);
+
+                    basket.style.boxShadow = '0 0 15px #f1c40f';
+                    setTimeout(() => {
+                        basket.style.boxShadow = '3px 3px 0 rgba(0,0,0,0.2)';
+                    }, 150);
+                }
+            }, 50);
+        }
+
+        function endCatchGame() {
+            isGameActive = false;
+            clearInterval(gameInterval);
+            clearInterval(coinSpawnInterval);
+
+            balance += gameScore;
+            updateAllDisplays();
+
+            alert(`🎉 ИГРА ОКОНЧЕНА!\n\nТы поймал кэшбэка на ${gameScore} 🪙!`);
+
+            catchModal.style.display = 'none';
+        }
+
+        gameArea.addEventListener('touchmove', function(e) {
+            if (!isGameActive) return;
+
+            e.preventDefault();
+
+            const touch = e.touches[0];
+
+            const areaRect = gameArea.getBoundingClientRect();
+
+            let touchX = touch.clientX - areaRect.left;
+
+            const basketWidth = basket.offsetWidth;
+            if (touchX < basketWidth / 2) touchX = basketWidth / 2;
+            if (touchX > areaRect.width - basketWidth / 2) touchX = areaRect.width - basketWidth / 2;
+
+            basket.style.left = `${touchX}px`;
+        }, { passive: false });
+
+        gameArea.addEventListener('mousemove', function(e) {
+            if (!isGameActive) return;
+            const areaRect = gameArea.getBoundingClientRect();
+            let mouseX = e.clientX - areaRect.left;
+            const basketWidth = basket.offsetWidth;
+            if (mouseX < basketWidth / 2) mouseX = basketWidth / 2;
+            if (mouseX > areaRect.width - basketWidth / 2) mouseX = areaRect.width - basketWidth / 2;
+            basket.style.left = `${mouseX}px`;
+        });
+
+        catchModal.addEventListener('click', e => {
+            if (e.target === catchModal && !isGameActive) catchModal.style.display = 'none';
+        });
+
         function startEnergyTimer() {
             setInterval(() => {
                 if (energy < 5) {
