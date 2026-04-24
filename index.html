@@ -173,11 +173,24 @@
         .board-tile.jackpot { background: #f1c40f; border-color: white; color: black; box-shadow: 0 6px 0 black, 0 0 10px #f1c40f; }
         .board-tile.passed { background: #044c22 !important; border-color: #27ae60 !important; color: #145a32 !important; opacity: 0.7; box-shadow: 0 4px 0 black !important; }
         #player-token {
-            position: absolute; width: 60px; height: 60px; font-size: 45px;
-            z-index: 100; display: flex; align-items: center; justify-content: center;
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            filter: drop-shadow(0 8px 4px rgba(0,0,0,0.6)); margin-top: -15px;
-        }
+    position: absolute; 
+    width: 60px; 
+    height: 60px;
+    z-index: 100; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    filter: drop-shadow(0 6px 4px rgba(0,0,0,0.5)); 
+    margin-top: -25px; 
+}
+.player-sprite {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated; 
+    image-rendering: crisp-edges;
+}
         .dice-section { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 15px; width: 100%; }
         #dice-face {
             font-size: 50px; line-height: 1; color: var(--mtb-red);
@@ -606,7 +619,7 @@
             </div>
             <div id="board-viewport">
                 <div id="board-container">
-                    <div id="player-token">🚗</div>
+                    <div id="player-token"><img src="https://i.postimg.cc/zByYBNm6/cel.png" class="player-sprite"></div>
                 </div>
             </div>
             <div class="dice-section">
@@ -829,6 +842,7 @@
         const myRankTokens = document.getElementById('my-rank-tokens');
         const sidebar = document.getElementById('sidebar');
         const tabHome = document.getElementById('tab-home');
+        const playerSpriteUrl = "https://i.postimg.cc/zByYBNm6/cel.png"; 
 
         function updateAllDisplays() {
             if (tokensDisplay) tokensDisplay.textContent = `🪙 ${balance}`;
@@ -1076,7 +1090,7 @@ function closeFinanceHelp() {
 
         function initBoard() {
     if (!boardContainer) return;
-    boardContainer.innerHTML = '<div id="player-token">🚗</div>';
+    boardContainer.innerHTML = `<div id="player-token"><img src="${playerSpriteUrl}" class="player-sprite"></div>`;
     const iconGame = "https://i.pinimg.com/736x/b8/94/f5/b894f5ec29159c427f3ac1d9eebc2bfd.jpg";
     const iconWheel = "https://i.pinimg.com/736x/69/99/a7/6999a7056739d74cb343ae09f50af849.jpg";
     const iconQuiz = "https://i.pinimg.com/736x/0e/b6/7c/0eb67c38bd9a08e3479a5885f8210aa8.jpg";
