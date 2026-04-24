@@ -602,13 +602,14 @@
 
         <!-- Вкладка GAME -->
         <div id="tab-game" class="tab-panel">
+            <button class="retro-btn finance-help-btn" onclick="showFinanceHelp()">помощь 💡</button>
             <div class="energy-retro">
                 <span>⚡️ <span id="energy-count">5</span>/5</span>
                 <span id="energy-timer">МАКСИМУМ</span>
             </div>
             <div id="board-viewport">
                 <div id="board-container">
-                    <div id="player-token">🚗</div>
+                    <div id="player-token"><img src="https://i.postimg.cc/zByYBNm6/cel.png" class="player-sprite"></div>
                 </div>
             </div>
             <div class="dice-section">
@@ -853,7 +854,7 @@
         window.onload = () => {
             updateAllDisplays();
             addLogEntry("КЭШБЭК_ЗА_КОФЕ", 50, "plus");
-            addLogEntry("MTB_ТРАНЗАКЦИЯ:VARKA", 4.50, "bank");
+            addLogEntry("MTB_ТРАНЗАКЦИЯ:_VARKA", 4.50, "bank");
         };
 
         function switchTab(tabId) {
